@@ -69,15 +69,10 @@ main section.categories-show {
 
         border-color: #999;
 
-        footer {
-          opacity: 1.0;
-        }
-
-        aside.sold-out {
+        footer, aside.sold-out {
           opacity: 1.0;
         }
       }
-
     }
   }
 }
