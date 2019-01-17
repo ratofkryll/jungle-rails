@@ -9,13 +9,13 @@
       <p><%= line_item.product.description %>
     </td>
     <td>
-      <%= line_item.item_price_cents / 100.00 %>
+      <%= number_to_currency(line_item.item_price_cents / 100.00) %>
     </td>
     <td>
       <%= line_item.quantity %>
     </td>
     <td>
-      <%= line_item.total_price_cents / 100.00 %>
+      <%= number_to_currency(line_item.total_price_cents / 100.00) %>
     </td>
   </tr>
 <% end %>

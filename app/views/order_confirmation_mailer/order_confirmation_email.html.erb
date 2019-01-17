@@ -5,13 +5,15 @@
   </head>
   <body>
     <h1>Thank you for your order, <%= @order.email %>!</h1>
-    <p>
-      You have successfully signed up to example.com,
-      your username is:.<br>
-    </p>
-    <p>
-      To login to the site, just follow this link:.
-    </p>
-    <p>Thanks for joining and have a great day!</p>
+    <p>Your order will ship.</p>
+    <h3>Order details:</h3>
+    <p>Order Total: <%= number_to_currency(@order.total_cents / 100.0) %>
+    <ul>
+      <% @order.line_items.each do |line_item| %>
+        <li>
+          <%= line_item.quantity %> x <%= line_item.product.name %>
+        </li>
+      <% end %>
+    </ul>
   </body>
 </html>
