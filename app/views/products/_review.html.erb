@@ -1,0 +1,6 @@
+<% @product.reviews.each do |review| %>
+  <div>
+    <p><%= review.user.first_name %> <%= review.user.last_name %> <%= review.rating %>/5</p>
+    <p><%= review.description %>
+  </div>
+<% end %>
