@@ -44,7 +44,7 @@ RSpec.describe User, type: :model do
 
   describe '.authenticate_with_credentials' do
     it 'signs the user in if credentials are valid' do
-      expect(User.authenticate_with_credentials('email@email.email', 'password')).not_to eql(nil)
+      expect(User.authenticate_with_credentials(@user.email, @user.password)).not_to eql(nil)
     end
     it 'signs the user in if credentials are valid but email is in the wrong case' do
       expect(User.authenticate_with_credentials('EMAIL@email.email', 'password')).not_to eql(nil)
