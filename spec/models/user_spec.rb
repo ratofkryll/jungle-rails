@@ -21,7 +21,7 @@ RSpec.describe User, type: :model do
     end
     it 'is not valid if the new user\'s email is already in use' do
       @user2 = User.create({
-        email: 'EMAIL@email.email',
+        email: 'email@email.email',
         password: 'word',
         password_confirmation: 'word'
         })
@@ -43,6 +43,14 @@ RSpec.describe User, type: :model do
   end
 
   describe '.authenticate_with_credentials' do
-    
+    it 'signs the user in if credentials are valid' do
+      expect(User.authenticate_with_credentials('email@email.email', 'password')).not_to eql(nil)
+    end
+    it 'signs the user in if credentials are valid but email is in the wrong case' do
+      expect(User.authenticate_with_credentials('EMAIL@email.email', 'password')).not_to eql(nil)
+    end
+    it 'signs the user in if credentials are valid but email has spaces on either side' do
+      expect(User.authenticate_with_credentials('    email@email.email   ', 'password')).not_to eql(nil)
+    end
   end
 end
