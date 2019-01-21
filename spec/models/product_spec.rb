@@ -38,7 +38,8 @@ RSpec.describe Product, type: :model do
       expect(product).to_not be_valid
     end
     it 'saves errors in errors.full_messages' do
-      product = Product.create({
+      category = Category.create! name: 'Category'
+      product = category.products.create({
         name: 'Product',
         quantity: 1,
         price: 100
