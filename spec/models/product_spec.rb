@@ -1,32 +1,25 @@
 require 'rails_helper'
 
 RSpec.describe Product, type: :model do
+  before(:each) do
+    @category = Category.create! name: 'Category'
+    @product = @category.products.new({
+      name: 'Product',
+      quantity: 1,
+      price: 100
+      })
+  end
   describe 'Validations' do
     it 'is not valid without a name' do
-      @category = Category.create! name: 'Category'
-      @product = @category.products.new({
-        name: nil,
-        quantity: 1,
-        price: 100
-        })
+      @product.name = nil
       expect(@product).to_not be_valid
     end
     it 'is not valid without a price' do
-      @category = Category.create! name: 'Category'
-      @product = @category.products.new({
-        name: 'Product',
-        quantity: 1,
-        price: nil
-        })
+      @product.price_cents = nil
       expect(@product).to_not be_valid
     end
     it 'is not valid without a quantity' do
-      @category = Category.create! name: 'Category'
-      @product = @category.products.new({
-        name: 'Product',
-        quantity: nil,
-        price: 100
-        })
+      @product.quantity = nil
       expect(@product).to_not be_valid
     end
     it 'is not valid without a category' do
