@@ -17,7 +17,13 @@
           <dt>Name</dt>
           <dd><%= @product.name %></dd>
           <dt>Rating</dt>
-          <dd><%= @product.reviews.average(:rating).round(1) %> / 5</dd>
+          <dd>
+            <% if @product.reviews.length == 0 %>
+              This product has no reviews.
+            <% else %>
+              <%= @product.reviews.average(:rating).round(1) %> / 5
+            <% end %>
+          </dd>
           <dt>Description</dt>
           <dd><%= @product.description %></dd>
           <dt>Quantity</dt>
